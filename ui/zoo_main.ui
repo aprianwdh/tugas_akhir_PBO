@@ -1,0 +1,638 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>ZooMainWindow</class>
+ <widget class="QMainWindow" name="ZooMainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1280</width>
+    <height>800</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>1080</width>
+    <height>720</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>🦁  Zoo Database — Kebun Binatang</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QMainWindow, QWidget {
+    background-color: #0F1117;
+    color: #F1F5F9;
+    font-family: 'Segoe UI', 'SF Pro Display', Arial, sans-serif;
+}
+QScrollArea {
+    border: none;
+    background: transparent;
+}
+QScrollBar:vertical {
+    background: #1A1D2E;
+    width: 6px;
+    border-radius: 3px;
+}
+QScrollBar::handle:vertical {
+    background: #2D3154;
+    border-radius: 3px;
+    min-height: 30px;
+}
+QScrollBar::handle:vertical:hover {
+    background: #6C63FF;
+}
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+QLineEdit, QTextEdit, QComboBox, QSpinBox {
+    background: #232640;
+    color: #F1F5F9;
+    border: 1.5px solid #2D3154;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    selection-background-color: #6C63FF;
+}
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus {
+    border-color: #6C63FF;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #94A3B8;
+    margin-right: 8px;
+}
+QComboBox QAbstractItemView {
+    background: #232640;
+    color: #F1F5F9;
+    border: 1.5px solid #2D3154;
+    border-radius: 8px;
+    selection-background-color: #6C63FF;
+    padding: 4px;
+}
+QLabel {
+    background: transparent;
+}
+QMessageBox {
+    background: #1A1D2E;
+    color: #F1F5F9;
+}
+QMessageBox QPushButton {
+    background: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 6px 18px;
+    font-weight: 600;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <!-- Root HBoxLayout: sidebar + content -->
+   <layout class="QHBoxLayout" name="rootLayout">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <property name="leftMargin">
+     <number>0</number>
+    </property>
+    <property name="topMargin">
+     <number>0</number>
+    </property>
+    <property name="rightMargin">
+     <number>0</number>
+    </property>
+    <property name="bottomMargin">
+     <number>0</number>
+    </property>
+
+    <!-- ═══════════════ SIDEBAR ═══════════════ -->
+    <item>
+     <widget class="QWidget" name="sidebar">
+      <property name="minimumWidth">
+       <number>220</number>
+      </property>
+      <property name="maximumWidth">
+       <number>220</number>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">QWidget#sidebar {
+    background: #1A1D2E;
+    border-right: 1px solid #2D3154;
+}</string>
+      </property>
+      <layout class="QVBoxLayout" name="sidebarLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+       <property name="leftMargin">
+        <number>18</number>
+       </property>
+       <property name="topMargin">
+        <number>28</number>
+       </property>
+       <property name="rightMargin">
+        <number>18</number>
+       </property>
+       <property name="bottomMargin">
+        <number>28</number>
+       </property>
+
+       <!-- Logo emoji -->
+       <item>
+        <widget class="QLabel" name="logoLabel">
+         <property name="text">
+          <string>🦁</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">font-size: 40px;</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- App title -->
+       <item>
+        <widget class="QLabel" name="appTitleLabel">
+         <property name="text">
+          <string>ZooBase</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #F1F5F9; font-size: 22px; font-weight: 800; letter-spacing: -0.5px;</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Tagline -->
+       <item>
+        <widget class="QLabel" name="taglineLabel">
+         <property name="text">
+          <string>Manajemen Hewan</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #94A3B8; font-size: 11px;</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Spacing 24px -->
+       <item>
+        <spacer name="spacerSbTop">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>24</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- Horizontal separator -->
+       <item>
+        <widget class="QFrame" name="sbSeparator">
+         <property name="frameShape">
+          <enum>QFrame::HLine</enum>
+         </property>
+         <property name="frameShadow">
+          <enum>QFrame::Sunken</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #2D3154;</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Spacing 12px -->
+       <item>
+        <spacer name="spacerSbMid">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>12</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- Nav label -->
+       <item>
+        <widget class="QLabel" name="navLabel">
+         <property name="text">
+          <string>NAVIGASI</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #94A3B8; font-size: 10px; font-weight: 700; letter-spacing: 1.5px;</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Nav: Semua Hewan -->
+       <item>
+        <widget class="QPushButton" name="navAnimalsBtn">
+         <property name="text">
+          <string>  🐾  Semua Hewan</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background: transparent;
+    color: #94A3B8;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background: #232640;
+    color: #F1F5F9;
+}</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Nav: Statistik -->
+       <item>
+        <widget class="QPushButton" name="navStatsBtn">
+         <property name="text">
+          <string>  📊  Statistik</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background: transparent;
+    color: #94A3B8;
+    border: none;
+    border-radius: 10px;
+    padding: 10px 14px;
+    text-align: left;
+    font-size: 13px;
+    font-weight: 500;
+}
+QPushButton:hover {
+    background: #232640;
+    color: #F1F5F9;
+}</string>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Stretch -->
+       <item>
+        <spacer name="spacerSbStretch">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>40</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- Count label -->
+       <item>
+        <widget class="QLabel" name="countLabel">
+         <property name="text">
+          <string>0 Hewan</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background: #232640;
+color: #A78BFA;
+border-radius: 10px;
+padding: 10px;
+font-size: 13px;
+font-weight: 700;</string>
+         </property>
+        </widget>
+       </item>
+
+      </layout>
+     </widget>
+    </item>
+    <!-- ═══════════════ END SIDEBAR ═══════════════ -->
+
+    <!-- ═══════════════ MAIN CONTENT ═══════════════ -->
+    <item>
+     <widget class="QWidget" name="contentWidget">
+      <property name="styleSheet">
+       <string notr="true">QWidget#contentWidget { background: #0F1117; }</string>
+      </property>
+      <layout class="QVBoxLayout" name="contentLayout">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>28</number>
+       </property>
+       <property name="topMargin">
+        <number>24</number>
+       </property>
+       <property name="rightMargin">
+        <number>28</number>
+       </property>
+       <property name="bottomMargin">
+        <number>24</number>
+       </property>
+
+       <!-- ── Header row ── -->
+       <item>
+        <layout class="QHBoxLayout" name="headerLayout">
+         <property name="spacing">
+          <number>12</number>
+         </property>
+
+         <!-- Title column -->
+         <item>
+          <layout class="QVBoxLayout" name="titleColLayout">
+           <item>
+            <widget class="QLabel" name="pageTitleLabel">
+             <property name="text">
+              <string>Database Hewan Kebun Binatang</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: #F1F5F9; font-size: 26px; font-weight: 800; letter-spacing: -0.5px;</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="pageSubLabel">
+             <property name="text">
+              <string>Kelola dan pantau semua hewan di kebun binatang Anda</string>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">color: #94A3B8; font-size: 13px;</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+
+         <!-- Stretch -->
+         <item>
+          <spacer name="headerStretch">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeType">
+            <enum>QSizePolicy::Expanding</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+
+         <!-- Add button -->
+         <item alignment="Qt::AlignBottom">
+          <widget class="QPushButton" name="addAnimalBtn">
+           <property name="text">
+            <string>＋  Tambah Hewan</string>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>160</width>
+             <height>42</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>160</width>
+             <height>42</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+    background: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+QPushButton:hover {
+    background: #A78BFA;
+}
+QPushButton:pressed {
+    background: #6C63FF;
+}</string>
+           </property>
+           <property name="cursor">
+            <cursorShape>PointingHandCursor</cursorShape>
+           </property>
+          </widget>
+         </item>
+
+        </layout>
+       </item>
+       <!-- ── End Header ── -->
+
+       <!-- Spacing 20px -->
+       <item>
+        <spacer name="spacerAfterHeader">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- ── Search row ── -->
+       <item>
+        <layout class="QHBoxLayout" name="searchRowLayout">
+         <property name="spacing">
+          <number>8</number>
+         </property>
+
+         <!-- Search box -->
+         <item>
+          <widget class="QLineEdit" name="searchBox">
+           <property name="minimumHeight">
+            <number>42</number>
+           </property>
+           <property name="maximumHeight">
+            <number>42</number>
+           </property>
+           <property name="placeholderText">
+            <string>🔍  Cari hewan, spesies, habitat, atau asal daerah...</string>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLineEdit {
+    background: #1A1D2E;
+    color: #F1F5F9;
+    border: 1.5px solid #2D3154;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 13px;
+}
+QLineEdit:focus {
+    border-color: #6C63FF;
+}</string>
+           </property>
+          </widget>
+         </item>
+
+         <!-- Filter combo -->
+         <item>
+          <widget class="QComboBox" name="filterCombo">
+           <property name="minimumSize">
+            <size>
+             <width>150</width>
+             <height>42</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>150</width>
+             <height>42</height>
+            </size>
+           </property>
+           <item>
+            <property name="text">
+             <string>Semua Status</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Baik</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Stabil</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Rentan</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Terancam</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Kritis</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+
+        </layout>
+       </item>
+       <!-- ── End Search row ── -->
+
+       <!-- Spacing 20px -->
+       <item>
+        <spacer name="spacerAfterSearch">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Fixed</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+       <!-- ── Scroll area for animal cards grid ── -->
+       <item>
+        <widget class="QScrollArea" name="cardsScrollArea">
+         <property name="widgetResizable">
+          <bool>true</bool>
+         </property>
+         <property name="frameShape">
+          <enum>QFrame::NoFrame</enum>
+         </property>
+         <property name="horizontalScrollBarPolicy">
+          <enum>Qt::ScrollBarAlwaysOff</enum>
+         </property>
+         <widget class="QWidget" name="gridContainer">
+          <property name="styleSheet">
+           <string notr="true">background: transparent;</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout">
+           <property name="spacing">
+            <number>16</number>
+           </property>
+           <property name="leftMargin">
+            <number>0</number>
+           </property>
+           <property name="topMargin">
+            <number>0</number>
+           </property>
+           <property name="rightMargin">
+            <number>12</number>
+           </property>
+           <property name="bottomMargin">
+            <number>12</number>
+           </property>
+          </layout>
+         </widget>
+        </widget>
+       </item>
+       <!-- ── End scroll area ── -->
+
+      </layout>
+     </widget>
+    </item>
+    <!-- ═══════════════ END MAIN CONTENT ═══════════════ -->
+
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>

@@ -1,0 +1,624 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>AnimalFormDialog</class>
+ <widget class="QDialog" name="AnimalFormDialog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>520</width>
+    <height>680</height>
+   </rect>
+  </property>
+  <property name="minimumWidth">
+   <number>520</number>
+  </property>
+  <property name="windowTitle">
+   <string>Tambah / Edit Hewan</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">QDialog {
+    background: #0F1117;
+    color: #F1F5F9;
+}
+QLineEdit, QTextEdit, QComboBox, QSpinBox {
+    background: #232640;
+    color: #F1F5F9;
+    border: 1.5px solid #2D3154;
+    border-radius: 10px;
+    padding: 8px 12px;
+    font-size: 13px;
+    selection-background-color: #6C63FF;
+}
+QLineEdit:focus, QTextEdit:focus, QSpinBox:focus {
+    border-color: #6C63FF;
+}
+QComboBox::drop-down {
+    border: none;
+    width: 24px;
+}
+QComboBox::down-arrow {
+    image: none;
+    border-left: 5px solid transparent;
+    border-right: 5px solid transparent;
+    border-top: 6px solid #94A3B8;
+    margin-right: 8px;
+}
+QComboBox QAbstractItemView {
+    background: #232640;
+    color: #F1F5F9;
+    border: 1.5px solid #2D3154;
+    border-radius: 8px;
+    selection-background-color: #6C63FF;
+    padding: 4px;
+}
+QLabel {
+    background: transparent;
+}</string>
+  </property>
+
+  <layout class="QVBoxLayout" name="mainLayout">
+   <property name="spacing">
+    <number>14</number>
+   </property>
+   <property name="leftMargin">
+    <number>28</number>
+   </property>
+   <property name="topMargin">
+    <number>24</number>
+   </property>
+   <property name="rightMargin">
+    <number>28</number>
+   </property>
+   <property name="bottomMargin">
+    <number>24</number>
+   </property>
+
+   <!-- ── Dialog Title ── -->
+   <item>
+    <widget class="QLabel" name="dialogTitleLabel">
+     <property name="text">
+      <string>Tambah Hewan Baru</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #F1F5F9; font-size: 20px; font-weight: 700;</string>
+     </property>
+    </widget>
+   </item>
+
+   <!-- ── Horizontal separator ── -->
+   <item>
+    <widget class="QFrame" name="formSeparator">
+     <property name="frameShape">
+      <enum>QFrame::HLine</enum>
+     </property>
+     <property name="frameShadow">
+      <enum>QFrame::Sunken</enum>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #2D3154;</string>
+     </property>
+    </widget>
+   </item>
+
+   <!-- ── Image section row ── -->
+   <item>
+    <layout class="QHBoxLayout" name="imageSectionLayout">
+     <property name="spacing">
+      <number>0</number>
+     </property>
+
+     <!-- Image preview placeholder (replaced at runtime by RoundedImageLabel) -->
+     <item>
+      <widget class="QLabel" name="imgPreviewLabel">
+       <property name="minimumSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>110</width>
+         <height>110</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>🐾</string>
+       </property>
+       <property name="alignment">
+        <set>Qt::AlignHCenter|Qt::AlignVCenter</set>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background: #232640;
+border-radius: 14px;
+font-size: 32px;</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Spacing 14px -->
+     <item>
+      <spacer name="imgSpacerH">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>14</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <!-- Image upload column -->
+     <item>
+      <layout class="QVBoxLayout" name="imgColLayout">
+       <property name="spacing">
+        <number>6</number>
+       </property>
+
+       <item>
+        <widget class="QLabel" name="imgSectionLabel">
+         <property name="text">
+          <string>Foto Hewan</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #F1F5F9; font-size: 13px; font-weight: 600;</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QLabel" name="imgHintLabel">
+         <property name="text">
+          <string>Format: JPG, PNG, WEBP (max 5 MB)</string>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">color: #94A3B8; font-size: 11px;</string>
+         </property>
+        </widget>
+       </item>
+
+       <item>
+        <widget class="QPushButton" name="uploadBtn">
+         <property name="text">
+          <string>📁  Pilih Gambar</string>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>160</width>
+           <height>0</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>160</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background: transparent;
+    color: #6C63FF;
+    border: 1.5px solid #6C63FF;
+    border-radius: 10px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+QPushButton:hover {
+    background: #6C63FF22;
+}</string>
+         </property>
+         <property name="cursor">
+          <cursorShape>PointingHandCursor</cursorShape>
+         </property>
+        </widget>
+       </item>
+
+       <!-- Vertical stretch inside img col -->
+       <item>
+        <spacer name="imgColStretch">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeType">
+          <enum>QSizePolicy::Expanding</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>10</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+
+      </layout>
+     </item>
+
+     <!-- Horizontal stretch at end -->
+     <item>
+      <spacer name="imgRowStretch">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+    </layout>
+   </item>
+   <!-- ── End image section ── -->
+
+   <!-- ── Fields grid (2 columns × 4 rows) ── -->
+   <item>
+    <layout class="QGridLayout" name="fieldsGrid">
+     <property name="spacing">
+      <number>10</number>
+     </property>
+
+     <!-- Column 0: Nama Hewan -->
+     <item row="0" column="0">
+      <widget class="QLabel" name="labelName">
+       <property name="text">
+        <string>Nama Hewan *</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="0">
+      <widget class="QLineEdit" name="fieldName">
+       <property name="placeholderText">
+        <string>cth: Singa Afrika</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 2: Spesies -->
+     <item row="0" column="2">
+      <widget class="QLabel" name="labelSpecies">
+       <property name="text">
+        <string>Spesies *</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="1" column="2">
+      <widget class="QLineEdit" name="fieldSpecies">
+       <property name="placeholderText">
+        <string>cth: Panthera leo</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 0: Habitat -->
+     <item row="2" column="0">
+      <widget class="QLabel" name="labelHabitat">
+       <property name="text">
+        <string>Habitat</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="0">
+      <widget class="QLineEdit" name="fieldHabitat">
+       <property name="placeholderText">
+        <string>cth: Sabana, Hutan Hujan</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 2: Asal Daerah -->
+     <item row="2" column="2">
+      <widget class="QLabel" name="labelOrigin">
+       <property name="text">
+        <string>Asal Daerah</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="3" column="2">
+      <widget class="QLineEdit" name="fieldOrigin">
+       <property name="placeholderText">
+        <string>cth: Afrika, Sumatera</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 0: Umur -->
+     <item row="4" column="0">
+      <widget class="QLabel" name="labelAge">
+       <property name="text">
+        <string>Umur</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="0">
+      <widget class="QSpinBox" name="fieldAge">
+       <property name="minimum">
+        <number>0</number>
+       </property>
+       <property name="maximum">
+        <number>200</number>
+       </property>
+       <property name="suffix">
+        <string> tahun</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 2: Berat (kg) -->
+     <item row="4" column="2">
+      <widget class="QLabel" name="labelWeight">
+       <property name="text">
+        <string>Berat (kg)</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="5" column="2">
+      <widget class="QLineEdit" name="fieldWeight">
+       <property name="placeholderText">
+        <string>cth: 190.5</string>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Column 0: Jenis Makanan -->
+     <item row="6" column="0">
+      <widget class="QLabel" name="labelDiet">
+       <property name="text">
+        <string>Jenis Makanan</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="0">
+      <widget class="QComboBox" name="fieldDiet">
+       <item>
+        <property name="text">
+         <string>Herbivora</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Karnivora</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Omnivora</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Insektivora</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+
+     <!-- Column 2: Status -->
+     <item row="6" column="2">
+      <widget class="QLabel" name="labelStatus">
+       <property name="text">
+        <string>Status</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+       </property>
+      </widget>
+     </item>
+     <item row="7" column="2">
+      <widget class="QComboBox" name="fieldStatus">
+       <item>
+        <property name="text">
+         <string>Baik</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Stabil</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Rentan</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Terancam</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Kritis</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+
+     <!-- Middle column spacer (col 1) to match Python grid gap -->
+     <item row="0" column="1">
+      <spacer name="gridColSpacer">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Fixed</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>10</width>
+         <height>10</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+    </layout>
+   </item>
+   <!-- ── End fields grid ── -->
+
+   <!-- ── Notes label ── -->
+   <item>
+    <widget class="QLabel" name="labelNotes">
+     <property name="text">
+      <string>Catatan</string>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #94A3B8; font-size: 12px; font-weight: 600;</string>
+     </property>
+    </widget>
+   </item>
+
+   <!-- ── Notes text area ── -->
+   <item>
+    <widget class="QTextEdit" name="fieldNotes">
+     <property name="maximumHeight">
+      <number>80</number>
+     </property>
+     <property name="placeholderText">
+      <string>Informasi tambahan tentang hewan...</string>
+     </property>
+    </widget>
+   </item>
+
+   <!-- ── Action buttons row ── -->
+   <item>
+    <layout class="QHBoxLayout" name="btnRowLayout">
+     <property name="spacing">
+      <number>8</number>
+     </property>
+
+     <!-- Stretch -->
+     <item>
+      <spacer name="btnStretch">
+       <property name="orientation">
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeType">
+        <enum>QSizePolicy::Expanding</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>40</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+
+     <!-- Cancel button -->
+     <item>
+      <widget class="QPushButton" name="cancelBtn">
+       <property name="text">
+        <string>Batal</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: transparent;
+    color: #94A3B8;
+    border: 1.5px solid #94A3B8;
+    border-radius: 10px;
+    padding: 8px 18px;
+    font-size: 13px;
+    font-weight: 600;
+}
+QPushButton:hover {
+    background: #94A3B822;
+}</string>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+      </widget>
+     </item>
+
+     <!-- Save button -->
+     <item>
+      <widget class="QPushButton" name="saveBtn">
+       <property name="text">
+        <string>💾  Simpan</string>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">QPushButton {
+    background: #6C63FF;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    padding: 9px 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+}
+QPushButton:hover {
+    background: #A78BFA;
+}
+QPushButton:pressed {
+    background: #6C63FF;
+}</string>
+       </property>
+       <property name="cursor">
+        <cursorShape>PointingHandCursor</cursorShape>
+       </property>
+      </widget>
+     </item>
+
+    </layout>
+   </item>
+   <!-- ── End button row ── -->
+
+  </layout>
+ </widget>
+ <resources/>
+ <connections>
+  <!-- Connect cancelBtn.clicked → AnimalFormDialog.reject() -->
+  <connection>
+   <sender>cancelBtn</sender>
+   <signal>clicked()</signal>
+   <receiver>AnimalFormDialog</receiver>
+   <slot>reject()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>140</x>
+     <y>650</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>260</x>
+     <y>650</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
