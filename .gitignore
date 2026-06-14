@@ -1,0 +1,7 @@
+# Mengabaikan folder pycache
+__pycache__/
+
+# Mengabaikan file kompilasi Python lainnya
+*.pyc
+*.pyo
+*.pyd
