@@ -6,14 +6,12 @@ Aplikasi desktop berbasis **PyQt6** dan **SQLite** yang dirancang untuk mengelol
 
 ## 👥 Anggota Kelompok
 
-Silakan lengkapi nama dan NIM anggota kelompok Anda di bawah ini:
-
-| No. | Nama Anggota | NIM | Peran/Kontribusi |
-| :--- | :--- | :--- | :--- |
-| 1 | [Nama Anggota 1] | [NIM Anggota 1] | [Kontribusi, e.g., UI/UX & Refactoring] |
-| 2 | [Nama Anggota 2] | [NIM Anggota 2] | [Kontribusi, e.g., Database & Core Logic] |
-| 3 | [Nama Anggota 3] | [NIM Anggota 3] | [Kontribusi, e.g., Testing & Integrasi] |
-| 4 | [Nama Anggota 4] | [NIM Anggota 4] | [Kontribusi, e.g., Dokumentasi & Aset] |
+| No. | Nama Anggota | NIM 
+| :--- | :--- | :--- |
+| 1 | Aprian Widhi Wibowo | A710250006
+| 2 | Ismail Atsari | A710250030
+| 3 | Adha Ajiashari | A710250038
+| 4 | naufal rafi r.| a710250015
 
 ---
 
@@ -41,28 +39,6 @@ Silakan lengkapi nama dan NIM anggota kelompok Anda di bawah ini:
 
 5. **Arsitektur Modular**
    - Kode sumber telah direfaktorisasi secara modular untuk memisahkan konfigurasi, logika database, komponen antarmuka (UI widgets), dan tampilan window (views).
-
----
-
-## 📂 Struktur Proyek
-
-```text
-tugas_akhir_PBO/
-├── config/
-│   └── settings.py          # Palet warna, global stylesheet, dan konfigurasi konstan
-├── database/
-│   ├── manager.py           # Inisialisasi SQLite, CRUD database, & enkripsi keamanan user
-│   └── zoo.db               # File database SQLite (dibuat otomatis saat runtime)
-├── ui/
-│   ├── components/
-│   │   └── widgets.py       # Kustomisasi widget PyQt6 (RoundedImageLabel, pill_button, dll.)
-│   └── views/
-│       ├── auth_window.py   # Window untuk login dan registrasi pengguna
-│       ├── animal_form.py   # Dialog popup untuk tambah & edit data hewan
-│       └── zoo_app.py       # Dashboard utama aplikasi ZooBase
-├── main.py                  # Entry point utama untuk menjalankan aplikasi
-└── README.md                # Dokumentasi proyek
-```
 
 ---
 
