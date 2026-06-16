@@ -10,10 +10,10 @@ Silakan lengkapi nama dan NIM anggota kelompok Anda di bawah ini:
 
 | No. | Nama Anggota | NIM | Peran/Kontribusi |
 | :--- | :--- | :--- | :--- |
-| 1 | [Nama Anggota 1] | [NIM Anggota 1] | [Kontribusi, e.g., UI/UX & Refactoring] |
-| 2 | [Nama Anggota 2] | [NIM Anggota 2] | [Kontribusi, e.g., Database & Core Logic] |
-| 3 | [Nama Anggota 3] | [NIM Anggota 3] | [Kontribusi, e.g., Testing & Integrasi] |
-| 4 | [Nama Anggota 4] | [NIM Anggota 4] | [Kontribusi, e.g., Dokumentasi & Aset] |
+| 1 | [Aprian Widhi Wibowo] | [A710250006]
+| 2 | [Nama Anggota 2] | [NIM Anggota 2]
+| 3 | [Nama Anggota 3] | [NIM Anggota 3]
+| 4 | [Nama Anggota 4] | [NIM Anggota 4]
 
 ---
 
