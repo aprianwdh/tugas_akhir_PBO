@@ -5,3 +5,6 @@ __pycache__/
 *.pyc
 *.pyo
 *.pyd
+
+# Mengabaikan folder laporan tugas akhir agar tidak terdeteksi git
+laporan/
