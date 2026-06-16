@@ -8,9 +8,9 @@ Aplikasi desktop berbasis **PyQt6** dan **SQLite** yang dirancang untuk mengelol
 
 Silakan lengkapi nama dan NIM anggota kelompok Anda di bawah ini:
 
-| No. | Nama Anggota | NIM | Peran/Kontribusi |
-| :--- | :--- | :--- | :--- |
-| 1 | [Aprian Widhi Wibowo] | [A710250006]
+| No. | Nama Anggota | NIM 
+| :--- | :--- | :--- |
+| 1 | Aprian Widhi Wibowo | A710250006
 | 2 | [Nama Anggota 2] | [NIM Anggota 2]
 | 3 | [Nama Anggota 3] | [NIM Anggota 3]
 | 4 | [Nama Anggota 4] | [NIM Anggota 4]
