@@ -11,7 +11,7 @@ Aplikasi desktop berbasis **PyQt6** dan **SQLite** yang dirancang untuk mengelol
 | 1 | Aprian Widhi Wibowo | A710250006
 | 2 | Ismail Atsari | A710250030
 | 3 | Adha Ajiashari | A710250038
-| 4 | [Nama Anggota 4] | [NIM Anggota 4]
+| 4 | naufal rafi r.| a710250015
 
 ---
 
