@@ -42,28 +42,6 @@ Aplikasi desktop berbasis **PyQt6** dan **SQLite** yang dirancang untuk mengelol
 
 ---
 
-## 📂 Struktur Proyek
-
-```text
-tugas_akhir_PBO/
-├── config/
-│   └── settings.py          # Palet warna, global stylesheet, dan konfigurasi konstan
-├── database/
-│   ├── manager.py           # Inisialisasi SQLite, CRUD database, & enkripsi keamanan user
-│   └── zoo.db               # File database SQLite (dibuat otomatis saat runtime)
-├── ui/
-│   ├── components/
-│   │   └── widgets.py       # Kustomisasi widget PyQt6 (RoundedImageLabel, pill_button, dll.)
-│   └── views/
-│       ├── auth_window.py   # Window untuk login dan registrasi pengguna
-│       ├── animal_form.py   # Dialog popup untuk tambah & edit data hewan
-│       └── zoo_app.py       # Dashboard utama aplikasi ZooBase
-├── main.py                  # Entry point utama untuk menjalankan aplikasi
-└── README.md                # Dokumentasi proyek
-```
-
----
-
 ## 🛠️ Prasyarat & Cara Instalasi
 
 ### 1. Prasyarat
