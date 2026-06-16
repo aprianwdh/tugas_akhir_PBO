@@ -6,8 +6,6 @@ Aplikasi desktop berbasis **PyQt6** dan **SQLite** yang dirancang untuk mengelol
 
 ## 👥 Anggota Kelompok
 
-Silakan lengkapi nama dan NIM anggota kelompok Anda di bawah ini:
-
 | No. | Nama Anggota | NIM 
 | :--- | :--- | :--- |
 | 1 | Aprian Widhi Wibowo | A710250006
